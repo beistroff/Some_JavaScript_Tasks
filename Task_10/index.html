@@ -1,1 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Homework-buttons</title>
+    <style>
+      .password-form {
+        margin: 20px 0 0 20px;
+        display: flex;
+        flex-direction: column;
+      }
+      .input-wrapper {
+        position: relative;
+				width: intrinsic;
+			  width: -moz-max-content;
+  			width: -webkit-max-content;
+      }
 
+      .input-wrapper input {
+        min-width: 120px;
+        padding: 10px;
+        margin-bottom: 24px;
+      }
+
+      .input-wrapper i {
+        position: absolute;
+        right: 10px;
+        top: 12px;
+        color: grey;
+      }
+
+			.btn{
+				width: 150px;
+			}
+
+
+    </style>
+  </head>
+  <body>
+    <form onsubmit = "return onSubmit()" class="password-form" action="#" type="POST" id="password-form">
+			<label class="input-wrapper">
+				Enter password
+				<input type="password" id="password"/>
+				<i id="show-password" class="fas fa-eye icon-password"></i>
+			</label>
+      <label class="input-wrapper">
+				Confirm password
+				<input type="password" id="confirm-password"/>
+				<i id="show-confirm-password" class="fas fa-eye icon-password"></i>
+			</label>
+			<button id="btn-submit" type="submit" class="btn">Confirm</button>
+    </form>
+
+    <script>
+      const showPassword = document.querySelector("#show-password");
+      const showConfirmPassword = document.querySelector("#show-confirm-password");
+      const passwordField = document.querySelector("#password");
+      const confirmPasswordField = document.getElementById("confirm-password");
+      const btn = document.getElementById("btn-submit");
+
+      showPassword.addEventListener("click", function(){
+        if (passwordField.type === "password"){
+          passwordField.type = "text";
+          showPassword.classList.remove("fa-eye");
+          showPassword.classList.add("fa-eye-slash");
+        }
+        else{
+          passwordField.type = "password";
+          showPassword.classList.remove("fa-eye-slash");
+          showPassword.classList.add("fa-eye");
+        }
+
+      });
+      showConfirmPassword.addEventListener("click", function(){
+        if (confirmPasswordField.type === "password"){
+          confirmPasswordField.type = "text";
+          showConfirmPassword.classList.remove("fa-eye");
+          showConfirmPassword.classList.add("fa-eye-slash");
+        }
+        else{
+          confirmPasswordField.type = "password";
+          showConfirmPassword.classList.remove("fa-eye-slash");
+          showConfirmPassword.classList.add("fa-eye");
+        }
+      });
+
+      function onSubmit (){
+        let string1 = document.getElementById("password").value;
+        let string2 = document.getElementById("confirm-password").value;
+        if (string1 != string2){
+          alert("You're not allowed to visit the website!");
+        }
+        else {
+          alert("You're welcome!");
+        }
+      }
+
+    </script>
+  </body>
+</html>
